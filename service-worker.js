@@ -1,21 +1,26 @@
-    const CACHE_NAME = 'rostin-adventure-cache-v4';
+const CACHE_NAME = 'rostin-adventure-cache-v4';
 
+// SOLO archivos que existen y no causan errores:
 const urlsToCache = [
+  '/', 
   'index.html',
-  'pwa.css',
   'comprar.html',
+  'pwa.css',
   'manifest.json',
+  '/service-worker.js',
+
+  // Imágenes que realmente EXISTEN y NO tienen espacios
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
-  'Imagenes/Tree%20jungle.png', // ← espacio codificado
   'Imagenes/Copito.png',
   'Imagenes/Boss.png',
   'Imagenes/Movement.png',
-  'hero.jpg'
+
+  // ⚠ Quita esta cuando renombres el archivo sin espacio
+  // 'Imagenes/Tree-jungle.png'
 ];
 
-// INSTALACIÓN DEL SERVICE WORKER
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -30,7 +35,6 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// FETCH: responder desde cache o red
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
@@ -40,7 +44,6 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// ACTIVATE: borrar caches viejos
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
