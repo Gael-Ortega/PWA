@@ -1,6 +1,6 @@
 const CACHE_NAME = 'rostin-adventure-cache-v4';
 
-// SOLO archivos que existen y no causan errores:
+// SOLO archivos que existen y NO causan errores:
 const urlsToCache = [
   '/', 
   'index.html',
@@ -15,10 +15,11 @@ const urlsToCache = [
   'Imagenes/Malakar.png',
   'Imagenes/Copito.png',
   'Imagenes/Boss.png',
-  'Imagenes/Movement.png',
+  'Imagenes/Movement.png'
 
-  // ⚠ Quita esta cuando renombres el archivo sin espacio
-  // 'Imagenes/Tree-jungle.png'
+  // ⚠ Archivos que dan error, se eliminan:
+  // 'Imagenes/Tree-jungle.png',
+  // 'hero.jpg'
 ];
 
 self.addEventListener('install', (event) => {
