@@ -3,124 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar Rostin Adventure</title>
-    <!-- Carga de Tailwind CSS -->
+    <title>Comprar Rostin Adventure</title>
+    <!-- Carga de Tailwind CSS para el diseño rápido de la ventana -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Paleta de Colores basada en los Reinos */
+        /* Variables de color de pwa.css para consistencia */
         :root {
-            --color-primary: #34D399; /* Verde (Naturaleza) */
-            --color-secondary: #60A5FA; /* Azul Claro (Aire) */
-            --color-accent: #F87171; /* Rojo (Fuego) */
-            --color-dark: #1F2937; /* Fondo Oscuro */
-            --font-family: 'Inter', sans-serif;
+            --color-primario: #00A8E8; /* Azul vibrante (Primario) */
+            --color-secundario: #FF6B6B; /* Rojo coral (Secundario/Acento) */
+            --color-fondo: #1A1A1A; /* Gris oscuro (Fondo) */
+            --color-acento: #4ECDC4; /* Turquesa (Acento) */
+            --color-texto: #FFFFFF;
         }
+
+        /* Colores específicos para la ventana de descarga */
+        .text-game-primary { color: var(--color-primario); }
+        .bg-game-dark { background-color: var(--color-fondo); }
+        .border-game-primary { border-color: var(--color-primario); }
+        .border-game-secondary { border-color: var(--color-acento); }
+
+        /* Estilos de botones */
+        .btn-primary {
+            background-color: var(--color-primario);
+            color: var(--color-fondo);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-acento);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: var(--color-acento);
+            color: var(--color-fondo);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-primario);
+            transform: translateY(-2px);
+        }
+        
         body {
-            font-family: var(--font-family);
-            background-color: #f3f4f6; /* Fondo de la página */
+            font-family: 'Open Sans', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-        }
-        .text-game-primary { color: var(--color-primary); }
-        .bg-game-dark { background-color: var(--color-dark); }
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: var(--color-dark);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .btn-primary:hover {
-            background-color: #10B981;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background-color: var(--color-secondary);
-            color: var(--color-dark);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .btn-secondary:hover {
-            background-color: #3b82f6;
-            transform: translateY(-2px);
         }
     </style>
 </head>
 <body class="bg-game-dark">
 
     <!-- Modal/Ventana de Descarga -->
-    <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl max-w-lg w-full transform transition-all duration-300 scale-100">
-        <h2 class="text-4xl font-extrabold text-center mb-6 text-game-primary">¡Elige tu Aventura!</h2>
-        <p class="text-gray-600 dark:text-gray-300 text-center mb-10">Descarga la DEMO gratuita o instala la versión completa de la PWA para disfrutar del juego en cualquier momento.</p>
+    <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl max-w-lg w-full transform transition-all duration-300 scale-100 dark:bg-[#282828]">
+        <h2 class="text-4xl font-extrabold text-center mb-6 text-game-primary font-['Montserrat']">¡Elige tu Aventura!</h2>
+        <p class="text-gray-400 text-center mb-10">Descarga la DEMO gratuita o instala la versión completa de la PWA para disfrutar del juego en cualquier momento.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <!-- Opción 1: Descargar DEMO Gratuita -->
-            <div class="p-5 border-2 border-game-primary rounded-xl text-center shadow-lg hover:shadow-2xl transition duration-300">
+            <div class="p-5 border-2 border-game-primary rounded-xl text-center shadow-lg hover:shadow-2xl transition duration-300 bg-[#1A1A1A]/50">
                 <div class="text-5xl mb-3 text-game-primary">🎮</div>
-                <h3 class="text-2xl font-bold mb-2 dark:text-white">DEMO Gratuita</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Accede a las primeras secciones del Reino Copito (Tutorial) y Tree Jungle.</p>
+                <h3 class="text-2xl font-bold mb-2 text-white">DEMO Gratuita</h3>
+                <p class="text-sm text-gray-400 mb-4">Accede a las primeras secciones del Reino Copito (Tutorial) y Tree Jungle.</p>
                 <a href="#" class="btn-primary w-full block py-3 rounded-xl font-bold uppercase">Descargar DEMO</a>
             </div>
 
-            <!-- Opción 2: Instalar PWA Completa (Simula la Descarga de la Página) -->
-            <div class="relative p-5 border-2 border-game-secondary rounded-xl text-center shadow-lg bg-gray-50 dark:bg-gray-700 hover:shadow-2xl transition duration-300">
-                <div class="absolute top-[-10px] right-[-10px] bg-game-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6">¡Mejor Opción!</div>
+            <!-- Opción 2: Instalar PWA Completa -->
+            <div class="relative p-5 border-2 border-game-secondary rounded-xl text-center shadow-lg bg-[#1A1A1A]/70 hover:shadow-2xl transition duration-300">
+                <div class="absolute top-[-10px] right-[-10px] bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6">¡Mejor Opción!</div>
                 <div class="text-5xl mb-3 text-game-secondary">🌐</div>
-                <h3 class="text-2xl font-bold mb-2 dark:text-white">Instalar PWA Completa</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Instala la página principal como una aplicación en tu dispositivo para acceso rápido y offline.</p>
-                <!-- Este botón será clave para la funcionalidad de PWA -->
+                <h3 class="text-2xl font-bold mb-2 text-white">Instalar PWA Completa</h3>
+                <p class="text-sm text-gray-400 mb-4">Instala la página principal como una aplicación en tu dispositivo para acceso rápido y offline.</p>
+                <!-- BOTÓN CLAVE PARA LA INSTALACIÓN DE LA PWA -->
                 <button id="installButton" class="btn-secondary w-full block py-3 rounded-xl font-bold uppercase">Instalar Aplicación</button>
             </div>
         </div>
 
-        <a href="index.html" class="text-center block mt-8 text-gray-500 dark:text-gray-400 hover:text-game-primary transition duration-300">Volver a la página principal</a>
+        <a href="index.html" class="text-center block mt-8 text-gray-400 hover:text-game-primary transition duration-300">Volver a la página principal</a>
     </div>
 
-    <!-- Script para la funcionalidad de instalación PWA -->
+    <!-- Script para la funcionalidad de instalación PWA (Mecanismo de beforeinstallprompt) -->
     <script>
         let deferredPrompt;
         const installButton = document.getElementById('installButton');
 
-        // 1. Ocultar el botón de instalación por defecto
+        // 1. Ocultar el botón si no es soportado por el navegador o si ya está instalado
         installButton.style.display = 'none';
 
-        // 2. Capturar el evento beforeinstallprompt (activado si el navegador soporta PWA)
+        // 2. Capturar el evento beforeinstallprompt (activado si el navegador soporta PWA y no está instalada)
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevenir que el navegador muestre su propio mensaje de instalación
             e.preventDefault();
-            // Guardar el evento para poder dispararlo después (con el clic del botón)
+            // Guardar el evento para dispararlo después con el clic del botón
             deferredPrompt = e;
-            // Mostrar el botón de instalación personalizado
+            // Mostrar el botón personalizado
             installButton.style.display = 'block';
         });
 
         // 3. Manejar el clic del botón de instalación
         installButton.addEventListener('click', async () => {
             if (deferredPrompt) {
-                // Ocultar el botón inmediatamente
+                // Ocultar el botón para evitar doble clic
                 installButton.style.display = 'none';
                 
                 // Disparar la ventana de instalación del navegador
                 deferredPrompt.prompt();
                 
-                // Esperar a que el usuario responda al prompt
+                // Esperar a que el usuario responda
                 const { outcome } = await deferredPrompt.userChoice;
                 
-                // Opcional: registrar si el usuario instaló o canceló
                 console.log(`Resultado de la instalación: ${outcome}`);
                 
-                // Limpiar la referencia al evento
+                // Limpiar la referencia
                 deferredPrompt = null;
             } else {
-                alert('Tu navegador ya soporta la instalación de esta PWA, o ya la tienes instalada. Abre el menú del navegador para buscar la opción "Instalar aplicación".');
+                // Mensaje de fallback si el botón aparece y no se activa el prompt
+                alert('La opción de instalar está en el menú de tu navegador o la aplicación ya está instalada.');
             }
         });
 
         // Opcional: Ocultar el botón si la aplicación ya está instalada
         window.addEventListener('appinstalled', () => {
             installButton.style.display = 'none';
-            alert('¡Rostin Adventure ha sido instalado exitosamente!');
+            // Puedes cambiar el texto del botón a "Instalado" si lo deseas
         });
     </script>
 </body>
