@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rostin-adventure-cache-v1';
+const CACHE_NAME = 'rostin-adventure-cache-v2'; // O v3, v4, etc.
 // Lista de todos los archivos necesarios para que la PWA funcione offline
 // Asegúrate de que las rutas de las imágenes sean correctas (ej. /Imagenes/...)
 const urlsToCache = [
