@@ -5,7 +5,7 @@ const urlsToCache = [
   '/', 
   'index.html',
   'pwa.css',
-  'Descargar.html', // Asumiendo que este es el nombre de tu archivo de descarga
+  'comprar.html', // Asumiendo que este es el nombre de tu archivo de descarga
   'manifest.json',
   '/service-worker.js',
   // Rutas a tus imágenes del juego, ajustadas a la estructura de carpetas
