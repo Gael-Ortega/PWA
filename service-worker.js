@@ -1,15 +1,11 @@
-const CACHE_NAME = 'rostin-adventure-cache-v4';
-
-// Archivos que sí existen
+const CACHE_NAME = 'rostin-adventure-cache-v6';
 const urlsToCache = [
-  '/', 
+  '/',
   'index.html',
   'comprar.html',
   'pwa.css',
   'manifest.json',
   '/service-worker.js',
-
-  // Imágenes que existen
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
@@ -22,8 +18,6 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Cache abierto, precacheando assets.');
-
-      // Precaching sin romperse si un archivo falta
       return Promise.allSettled(
         urlsToCache.map(url => cache.add(url))
       ).then(results => {
