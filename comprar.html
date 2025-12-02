@@ -89,16 +89,14 @@
         let deferredPrompt;
         const installButton = document.getElementById('installButton');
 
-        // 1. Ocultar el botón si no es soportado por el navegador o si ya está instalado
-        installButton.style.display = 'none';
+        // ANTES: La línea de ocultar estaba aquí. Ahora el botón es visible por defecto.
 
         // 2. Capturar el evento beforeinstallprompt (activado si el navegador soporta PWA y no está instalada)
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             // Guardar el evento para dispararlo después con el clic del botón
             deferredPrompt = e;
-            // Mostrar el botón personalizado
-            installButton.style.display = 'block';
+            // El botón ya es visible, solo confirmamos que el prompt está listo.
         });
 
         // 3. Manejar el clic del botón de instalación
@@ -118,8 +116,8 @@
                 // Limpiar la referencia
                 deferredPrompt = null;
             } else {
-                // Mensaje de fallback si el botón aparece y no se activa el prompt
-                alert('La opción de instalar está en el menú de tu navegador o la aplicación ya está instalada.');
+                // FALLBACK: Si el evento nativo no se disparó, guía al usuario a instalar desde el menú
+                alert('La opción de instalar se encuentra en el menú del navegador (los tres puntos o el ícono de "Descarga") o la aplicación ya está instalada.');
             }
         });
 
