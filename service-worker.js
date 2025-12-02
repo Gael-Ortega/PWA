@@ -1,14 +1,14 @@
-const CACHE_NAME = 'rostin-adventure-cache-v2'; // <--- CAMBIADO A v2
+const CACHE_NAME = 'rostin-adventure-cache-v3'; // Versión actualizada para forzar la limpieza de caché
 // Lista de todos los archivos necesarios para que la PWA funcione offline
-// Asegúrate de que las rutas de las imágenes sean correctas (ej. /Imagenes/...)
+// Es crucial que estas rutas coincidan EXACTAMENTE con los nombres de archivo en GitHub (incluyendo mayúsculas/minúsculas).
 const urlsToCache = [
   '/', 
   'index.html',
   'pwa.css',
-  'comprar.html', // Asumiendo que esta es la ruta de tu página de descarga
+  'Descargar.html', // Asumiendo que este es el nombre de tu archivo de descarga
   'manifest.json',
   '/service-worker.js',
-  // Rutas a tus imágenes del juego. Estas rutas deben coincidir con las usadas en index.html
+  // Rutas a tus imágenes del juego, ajustadas a la estructura de carpetas
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
@@ -16,7 +16,7 @@ const urlsToCache = [
   'Imagenes/Copito.png',
   'Imagenes/Boss.png',
   'Imagenes/Movement.png',
-  'hero.jpg', // Asumiendo que tienes una imagen hero.jpg para el fondo principal
+  'hero.jpg', // Asumiendo que tienes una imagen hero.jpg para el fondo principal (revisar caso de imagen)
   // Iconos del manifiesto
   'icons/icon-72x72.png',
   'icons/icon-192x192.png',
