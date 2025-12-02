@@ -2,26 +2,25 @@ const CACHE_NAME = 'rostin-adventure-cache-v3'; // Versión actualizada para for
 // Lista de todos los archivos necesarios para que la PWA funcione offline
 // Es crucial que estas rutas coincidan EXACTAMENTE con los nombres de archivo en GitHub (incluyendo mayúsculas/minúsculas).
 const urlsToCache = [
-  '/', 
   'index.html',
   'pwa.css',
-  'comprar.html', // Asumiendo que este es el nombre de tu archivo de descarga
+  'comprar.html',
   'manifest.json',
-  '/service-worker.js',
-  // Rutas a tus imágenes del juego, ajustadas a la estructura de carpetas
+  'service-worker.js',
+
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
-  'Imagenes/Tree jungle.png',
   'Imagenes/Copito.png',
   'Imagenes/Boss.png',
   'Imagenes/Movement.png',
-  'hero.jpg', // Asumiendo que tienes una imagen hero.jpg para el fondo principal (revisar caso de imagen)
-  // Iconos del manifiesto
+  'Imagenes/Tree%20jungle.png', // ← espacio codificado
+
   'icons/icon-72x72.png',
   'icons/icon-192x192.png',
   'icons/icon-512x512.png'
 ];
+
 
 // 1. Evento 'install': Se ejecuta la primera vez que se carga el Service Worker
 self.addEventListener('install', (event) => {
