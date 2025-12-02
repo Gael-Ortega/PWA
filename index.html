@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rostin Adventure - Página Principal</title>
     
+    <!-- Enlace al CSS externo original -->
     <link rel="stylesheet" type="text/css" href="pwa.css">
+
+    <!-- INICIO: METADATOS Y ENLACES PWA -->
+    <!-- CRÍTICO: Enlace al Manifest (usamos ruta absoluta para evitar problemas con subdirectorios) -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00A8E8"> 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- FIN: METADATOS Y ENLACES PWA -->
 </head>
 <body>
     <header>
@@ -14,11 +23,12 @@
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#caracteristicas">Características</a></li> 
                     <li><a href="#historia">Historia</a></li>
                     <li><a href="#personajes">Personajes</a></li>
                     <li><a href="#galeria">Galería</a></li>
-                    <li><a href="comprar.html">Comprar</a></li>
+                    <!-- RUTA CORREGIDA: Asumiendo que el archivo se llama descargar.html o comprar.html -->
+                    <li><a href="descargar.html">Comprar</a></li> 
                 </ul>
             </nav>
         </div>
@@ -29,11 +39,13 @@
             <div class="hero">
                 <h2>Una aventura épica te espera</h2>
                 <p>Descubre un mundo lleno de peligros y misterios.</p>
-                <a href="comprar.html" class="btn">Comprar ahora</a>
+                <!-- RUTA CORREGIDA -->
+                <a href="descargar.html" class="btn">Comprar ahora</a> 
             </div>
         </section>
 
-        <section id="Caracteristicas">
+        <!-- ID CORREGIDO: Asegurando minúsculas para consistencia -->
+        <section id="caracteristicas">
             <div class="container">
                 <h2>Características principales</h2>
                 <ul>
@@ -59,17 +71,20 @@
                 <h2>Conoce a los personajes</h2>
                 <div class="personajes-grid">
                     <div class="personaje">
-                        <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Rostin-idle-page.png" alt="Personaje 1">
+                        <!-- RUTA CORREGIDA: Asumiendo que la carpeta es 'imagenes' (minúsculas) -->
+                        <img src="imagenes/Rostin-idle-page.png" alt="Rostin">
                         <h3>Rostin</h3>
                         <p>Protagonista de la aventura, un joven que busca aventuras no imaginaba lo que tenia preparado el destino para el</p>
                     </div>
                     <div class="personaje">
-                        <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Elorien.png" alt="Personaje 2">
-                        <h3>Personaje 2</h3>
+                        <!-- RUTA CORREGIDA -->
+                        <img src="imagenes/Elorien.png" alt="Elorien">
+                        <h3>Elorien</h3>
                         <p>Guardiana de los reinos y elementos del mundo busca la paz y que se mantenga el equilibrio entre el mal y el bien</p>
                     </div>
                     <div class="personaje">
-                        <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Malakar.png" alt="Personaje 3">
+                        <!-- RUTA CORREGIDA -->
+                        <img src="imagenes/Malakar.png" alt="Malakar">
                         <h3>Malakar</h3>
                         <p>Antagonista de la aventura Busca apoderarse del poder de los amuletos y destruir los reinos con su poder</p>
                     </div>
@@ -81,10 +96,11 @@
             <div class="container">
                 <h2>Galería de imágenes</h2>
                 <div class="galeria-grid">
-                    <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Tree jungle.png" alt="Imagen 1">
-                    <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Copito.png" alt="Imagen 2">
-                    <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Boss.png" alt="Imagen 3">
-                    <img src="C:\Users\gabri\Desktop\PWA\Imagenes\Movement.png" alt="Imagen 4">
+                    <!-- RUTAS CORREGIDAS -->
+                    <img src="imagenes/Tree jungle.png" alt="Imagen 1">
+                    <img src="imagenes/Copito.png" alt="Imagen 2">
+                    <img src="imagenes/Boss.png" alt="Imagen 3">
+                    <img src="imagenes/Movement.png" alt="Imagen 4">
                 </div>
             </div>
         </section>
@@ -95,5 +111,24 @@
             <p>Derechos de autor &copy; 2023 Tu Videojuego. Todos los derechos reservados.</p>
         </div>
     </footer>
+    
+    <!-- INICIO: REGISTRO DEL SERVICE WORKER (CRÍTICO PARA PWA) -->
+    <script>
+        // Registrar el Service Worker. Se asume que service-worker.js está en la carpeta raíz.
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            // Usamos la ruta absoluta para asegurar el registro en la raíz del dominio
+            navigator.serviceWorker.register('/service-worker.js') 
+              .then(registration => {
+                console.log('Service Worker registrado con éxito:', registration);
+              })
+              .catch(error => {
+                console.log('Fallo el registro de Service Worker:', error);
+              });
+          });
+        }
+    </script>
+    <!-- FIN: REGISTRO DEL SERVICE WORKER -->
+
 </body>
 </html>
