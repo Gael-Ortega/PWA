@@ -118,7 +118,7 @@
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
             // Usamos la ruta absoluta para asegurar el registro en la raíz del dominio
-            navigator.serviceWorker.register('/service-worker.js') 
+          navigator.serviceWorker.register('service-worker.js')
               .then(registration => {
                 console.log('Service Worker registrado con éxito:', registration);
               })
