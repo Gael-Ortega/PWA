@@ -1,11 +1,11 @@
 const CACHE_NAME = 'rostin-adventure-cache-v6';
 const urlsToCache = [
-  '/',
+  './',
   'index.html',
   'comprar.html',
   'pwa.css',
   'manifest.json',
-  '/service-worker.js',
+  'service-worker.js',
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
@@ -35,7 +35,16 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      // Si está en cache, lo devuelve
+      if (response) return response;
+
+      // Si no está, intenta hacer fetch
+      return fetch(event.request)
+        .catch(() => {
+          // Aquí puedes devolver un offline.html si lo agregas
+          // return caches.match('offline.html');
+          console.warn(`Fallo fetch de: ${event.request.url}`);
+        });
     })
   );
 });
