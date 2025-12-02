@@ -1,6 +1,6 @@
 const CACHE_NAME = 'rostin-adventure-cache-v4';
 
-// SOLO archivos que existen y NO causan errores:
+// Archivos que sí existen
 const urlsToCache = [
   '/', 
   'index.html',
@@ -9,39 +9,40 @@ const urlsToCache = [
   'manifest.json',
   '/service-worker.js',
 
-  // Imágenes que realmente EXISTEN y NO tienen espacios
+  // Imágenes que existen
   'Imagenes/Rostin-idle-page.png',
   'Imagenes/Elorien.png',
   'Imagenes/Malakar.png',
   'Imagenes/Copito.png',
   'Imagenes/Boss.png',
   'Imagenes/Movement.png'
-
-  // ⚠ Archivos que dan error, se eliminan:
-  // 'Imagenes/Tree-jungle.png',
-  // 'hero.jpg'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Cache abierto, precacheando assets.');
-        return cache.addAll(urlsToCache);
-      })
-      .catch((error) => {
-        console.error('Fallo el precacheo:', error);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('Cache abierto, precacheando assets.');
+
+      // Precaching sin romperse si un archivo falta
+      return Promise.allSettled(
+        urlsToCache.map(url => cache.add(url))
+      ).then(results => {
+        results.forEach((result, idx) => {
+          if (result.status === 'rejected') {
+            console.warn(`No se pudo cachear: ${urlsToCache[idx]}`);
+          }
+        });
+      });
+    })
   );
   self.skipWaiting();
 });
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
   );
 });
 
