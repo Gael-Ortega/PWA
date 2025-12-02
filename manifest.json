@@ -1,5 +1,4 @@
 {
-
   "name": "Rostin Adventure",
   "short_name": "Rostin",
   "start_url": "index.html",
@@ -7,22 +6,6 @@
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#1a73e8",
-  "description": "Juego PWA de aventura desarrollado por Gael."
-    {
-      "src": "icons/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ]
+  "description": "Juego PWA de aventura desarrollado por Gael.",
+  "icons": []
 }
