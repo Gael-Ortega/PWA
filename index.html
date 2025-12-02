@@ -87,13 +87,21 @@
             <div class="container">
                 <h2>Galería de imágenes</h2>
                 <div class="galeria-grid">
-                    <!-- Se renombró para evitar espacios -->
                     <img src="Imagenes/Tree-jungle.png" alt="Imagen 1">
                     <img src="Imagenes/Copito.png" alt="Imagen 2">
                     <img src="Imagenes/Boss.png" alt="Imagen 3">
                     <img src="Imagenes/Movement.png" alt="Imagen 4">
                 </div>
             </div>
+        </section>
+
+        <!-- Botón de instalación PWA -->
+        <section id="instalar-pwa" class="container mt-12 text-center">
+            <h2 class="text-2xl font-bold mb-4">Instala Rostin Adventure</h2>
+            <p class="text-gray-400 mb-4">Disfruta del juego offline instalando la PWA en tu dispositivo.</p>
+            <button id="installButton" class="btn btn-secondary px-6 py-3 font-bold uppercase">
+                Instalar Aplicación
+            </button>
         </section>
     </main>
 
@@ -105,17 +113,42 @@
     
     <!-- SERVICE WORKER -->
     <script>
+        // Registro del Service Worker
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
             navigator.serviceWorker.register('service-worker.js')
-              .then(registration => {
-                console.log('Service Worker registrado con éxito:', registration);
-              })
-              .catch(error => {
-                console.log('Fallo el registro de Service Worker:', error);
-              });
+              .then(registration => console.log('Service Worker registrado con éxito:', registration))
+              .catch(error => console.log('Fallo el registro de Service Worker:', error));
           });
         }
+
+        // PWA instalación
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+        installButton.style.display = 'none'; // Oculto hasta que se dispare el evento
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'inline-block';
+        });
+
+        installButton.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                installButton.style.display = 'none';
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`Resultado de la instalación: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                alert('La opción de instalar está en el menú del navegador o la aplicación ya está instalada.');
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            installButton.style.display = 'none';
+            console.log('PWA instalada correctamente.');
+        });
     </script>
 </body>
 </html>
