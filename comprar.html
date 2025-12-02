@@ -60,9 +60,10 @@
 
     <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl max-w-lg w-full transform transition-all duration-300 scale-100 dark:bg-[#282828]">
         <h2 class="text-4xl font-extrabold text-center mb-6 text-game-primary font-['Montserrat']">¡Elige tu Aventura!</h2>
-        <p class="text-gray-400 text-center mb-10">Descarga la DEMO gratuita o instala la versión completa de la PWA para disfrutar del juego en cualquier momento.</p>
+        <p class="text-gray-400 text-center mb-10">Descarga la DEMO gratuita o ve a la página principal para instalar la versión completa de la PWA.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- DEMO Gratuita -->
             <div class="p-5 border-2 border-game-primary rounded-xl text-center shadow-lg hover:shadow-2xl transition duration-300 bg-[#1A1A1A]/50">
                 <div class="text-5xl mb-3 text-game-primary">🎮</div>
                 <h3 class="text-2xl font-bold mb-2 text-white">DEMO Gratuita</h3>
@@ -70,12 +71,17 @@
                 <a href="#" class="btn-primary w-full block py-3 rounded-xl font-bold uppercase">Descargar DEMO</a>
             </div>
 
+            <!-- Instalar PWA → enlace a la página principal -->
             <div class="relative p-5 border-2 border-game-secondary rounded-xl text-center shadow-lg bg-[#1A1A1A]/70 hover:shadow-2xl transition duration-300">
-                <div class="absolute top-[-10px] right-[-10px] bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6">¡Mejor Opción!</div>
+                <div class="absolute top-[-10px] right-[-10px] bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6">
+                    ¡Mejor Opción!
+                </div>
                 <div class="text-5xl mb-3 text-game-secondary">🌐</div>
                 <h3 class="text-2xl font-bold mb-2 text-white">Instalar PWA Completa</h3>
-                <p class="text-sm text-gray-400 mb-4">Instala la página principal como una aplicación en tu dispositivo para acceso rápido y offline.</p>
-                <button id="installButton" class="btn-secondary w-full block py-3 rounded-xl font-bold uppercase">Instalar Aplicación</button>
+                <p class="text-sm text-gray-400 mb-4">Para instalar la PWA y jugar offline, ve a la página principal.</p>
+                <a href="index.html" class="btn-secondary w-full block py-3 rounded-xl font-bold uppercase">
+                    Ir a la página principal
+                </a>
             </div>
         </div>
 
@@ -83,7 +89,7 @@
     </div>
 
     <script>
-        // Registro del Service Worker para asegurar offline en esta página también
+        // Registro del Service Worker para que esta página funcione offline
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
             navigator.serviceWorker.register('service-worker.js')
@@ -91,30 +97,6 @@
               .catch(error => console.log('Fallo el registro de Service Worker:', error));
           });
         }
-
-        let deferredPrompt;
-        const installButton = document.getElementById('installButton');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
-
-        installButton.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                installButton.style.display = 'none';
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`Resultado de la instalación: ${outcome}`);
-                deferredPrompt = null;
-            } else {
-                alert('La opción de instalar está en el menú del navegador o la aplicación ya está instalada.');
-            }
-        });
-
-        window.addEventListener('appinstalled', () => {
-            installButton.style.display = 'none';
-        });
     </script>
 </body>
 </html>
