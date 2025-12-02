@@ -1,0 +1,213 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variables de color */
+:root {
+    --color-primario: #00A8E8; /* Azul vibrante */
+    --color-secundario: #FF6B6B; /* Rojo coral */
+    --color-fondo: #1A1A1A; /* Gris oscuro */
+    --color-texto: #FFFFFF; /* Blanco */
+    --color-acento: #4ECDC4; /* Turquesa */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-primario);
+}
+
+main {
+    padding-top: 80px; /* Para compensar el header fijo */
+}
+
+section {
+    padding: 80px 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--color-acento);
+    text-transform: uppercase;
+}
+
+.hero {
+    background-image: url("hero.jpg"); /* Asegúrate de tener esta imagen */
+    background-size: cover;
+    background-position: center;
+    color: var(--color-texto);
+    text-align: center;
+    padding: 200px 0;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura para mejorar la legibilidad */
+}
+
+.hero h2 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+    background-color: var(--color-acento);
+    transform: translateY(-3px);
+}
+
+.caracteristicas ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+
+.caracteristicas li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.caracteristicas li:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.personajes-grid,
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+}
+
+.personaje {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+}
+
+.personaje img,
+.galeria-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.galeria-grid img:hover {
+    transform: scale(1.05);
+}
+
+.personaje h3 {
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.personaje p {
+    margin: 0 20px 20px;
+}
+
+footer {
+    background-color: #111;
+    color: #aaa;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
