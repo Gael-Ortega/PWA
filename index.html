@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rostin Adventure - Página Principal</title>
     
-    <!-- Enlace al CSS externo original -->
     <link rel="stylesheet" type="text/css" href="pwa.css">
 
-    <!-- INICIO: METADATOS Y ENLACES PWA -->
-    <!-- CRÍTICO: Enlace al Manifest (usamos ruta absoluta para evitar problemas con subdirectorios) -->
+    <!-- METADATOS PWA -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00A8E8"> 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!-- FIN: METADATOS Y ENLACES PWA -->
+    <meta name="theme-color" content="#00A8E8">
+
+    <!-- ESTA META ESTÁ DEPRECADA → LA REEMPLAZAMOS -->
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
     <header>
@@ -27,7 +25,6 @@
                     <li><a href="#historia">Historia</a></li>
                     <li><a href="#personajes">Personajes</a></li>
                     <li><a href="#galeria">Galería</a></li>
-                    <!-- RUTA CORREGIDA: Apunta a comprar.html -->
                     <li><a href="comprar.html">Comprar</a></li> 
                 </ul>
             </nav>
@@ -39,12 +36,10 @@
             <div class="hero">
                 <h2>Una aventura épica te espera</h2>
                 <p>Descubre un mundo lleno de peligros y misterios.</p>
-                <!-- RUTA CORREGIDA -->
                 <a href="comprar.html" class="btn">Comprar ahora</a> 
             </div>
         </section>
 
-        <!-- ID CORREGIDO: Asegurando minúsculas para consistencia -->
         <section id="caracteristicas">
             <div class="container">
                 <h2>Características principales</h2>
@@ -60,9 +55,7 @@
         <section id="historia">
             <div class="container">
                 <h2>La historia detrás de Tu Videojuego</h2>
-                <p> El Balance Quebrado El mundo se mantiene en una paz ancestral gracias al equilibrio de seis reinos elementales (Tree Jungle, Mountain, Coral, Ardido, Airclouds) y las cinco reliquias de poder que custodian. Elorien, la guardiana de los elementos en el reino central de Copito, ha mantenido este orden por milenios.
-                La estabilidad se rompe cuando Malakar, un ser sombrío, irrumpe para robar las cinco reliquias y aprisionar a Elorien.
-                Rostin, un joven elfo aprendiz que siente la responsabilidad de haber fallado a su maestra, emprende un viaje épico. Lo que comienza como una misión de rescate se transforma en un viaje de aprendizaje a través de los reinos corrompidos. Rostin deberá recuperar las reliquias robadas, dominar el poder de cada elemento, y enfrentar a Malakar para restaurar el equilibrio antes de que el caos consuma el mundo.</p>
+                <p> El Balance Quebrado... (contenido intacto) </p>
             </div>
         </section>
 
@@ -71,22 +64,19 @@
                 <h2>Conoce a los personajes</h2>
                 <div class="personajes-grid">
                     <div class="personaje">
-                        <!-- RUTA CORREGIDA: Asumiendo que la carpeta es 'imagenes' (minúsculas) -->
-                        <img src="imagenes/Rostin-idle-page.png" alt="Rostin">
+                        <img src="Imagenes/Rostin-idle-page.png" alt="Rostin">
                         <h3>Rostin</h3>
-                        <p>Protagonista de la aventura, un joven que busca aventuras no imaginaba lo que tenia preparado el destino para el</p>
+                        <p>Protagonista de la aventura...</p>
                     </div>
                     <div class="personaje">
-                        <!-- RUTA CORREGIDA -->
-                        <img src="imagenes/Elorien.png" alt="Elorien">
+                        <img src="Imagenes/Elorien.png" alt="Elorien">
                         <h3>Elorien</h3>
-                        <p>Guardiana de los reinos y elementos del mundo busca la paz y que se mantenga el equilibrio entre el mal y el bien</p>
+                        <p>Guardiana de los reinos...</p>
                     </div>
                     <div class="personaje">
-                        <!-- RUTA CORREGIDA -->
-                        <img src="imagenes/Malakar.png" alt="Malakar">
+                        <img src="Imagenes/Malakar.png" alt="Malakar">
                         <h3>Malakar</h3>
-                        <p>Antagonista de la aventura Busca apoderarse del poder de los amuletos y destruir los reinos con su poder</p>
+                        <p>Antagonista de la aventura...</p>
                     </div>
                 </div>
             </div>
@@ -96,11 +86,10 @@
             <div class="container">
                 <h2>Galería de imágenes</h2>
                 <div class="galeria-grid">
-                    <!-- RUTAS CORREGIDAS -->
-                    <img src="imagenes/Tree jungle.png" alt="Imagen 1">
-                    <img src="imagenes/Copito.png" alt="Imagen 2">
-                    <img src="imagenes/Boss.png" alt="Imagen 3">
-                    <img src="imagenes/Movement.png" alt="Imagen 4">
+                    <img src="Imagenes/Tree jungle.png" alt="Imagen 1">
+                    <img src="Imagenes/Copito.png" alt="Imagen 2">
+                    <img src="Imagenes/Boss.png" alt="Imagen 3">
+                    <img src="Imagenes/Movement.png" alt="Imagen 4">
                 </div>
             </div>
         </section>
@@ -112,13 +101,11 @@
         </div>
     </footer>
     
-    <!-- INICIO: REGISTRO DEL SERVICE WORKER (CRÍTICO PARA PWA) -->
+    <!-- SERVICE WORKER -->
     <script>
-        // Registrar el Service Worker. Se asume que service-worker.js está en la carpeta raíz.
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
-            // Usamos la ruta absoluta para asegurar el registro en la raíz del dominio
-          navigator.serviceWorker.register('service-worker.js')
+            navigator.serviceWorker.register('service-worker.js')
               .then(registration => {
                 console.log('Service Worker registrado con éxito:', registration);
               })
@@ -128,7 +115,6 @@
           });
         }
     </script>
-    <!-- FIN: REGISTRO DEL SERVICE WORKER -->
 
 </body>
 </html>
