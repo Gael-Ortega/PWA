@@ -83,6 +83,15 @@
     </div>
 
     <script>
+        // Registro del Service Worker para asegurar offline en esta página también
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+              .then(registration => console.log('Service Worker registrado con éxito:', registration))
+              .catch(error => console.log('Fallo el registro de Service Worker:', error));
+          });
+        }
+
         let deferredPrompt;
         const installButton = document.getElementById('installButton');
 
